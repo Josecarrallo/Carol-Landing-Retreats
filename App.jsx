@@ -208,9 +208,7 @@ function App() {
           cursor: 'pointer',
           width: '100%',
           display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '100vh'
+          justifyContent: 'center'
         }}
         onClick={toggleFullscreen}
       >
@@ -218,12 +216,9 @@ function App() {
           src={muelleImage}
           alt="Carol Stanbury Retreat"
           style={{
-            width: 'auto',
-            maxWidth: '100%',
+            width: '100%',
             height: 'auto',
-            maxHeight: '100vh',
-            display: 'block',
-            objectFit: 'contain'
+            display: 'block'
           }}
         />
         {/* Fullscreen Button */}
