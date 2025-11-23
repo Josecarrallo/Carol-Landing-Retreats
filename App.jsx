@@ -204,7 +204,7 @@ function App() {
         ref={imageRef}
         style={{
           backgroundImage: `url(${muelleImage})`,
-          backgroundSize: isFullscreen ? 'contain' : '100% auto',
+          backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
           backgroundColor: '#000',
