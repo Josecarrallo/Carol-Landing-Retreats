@@ -219,8 +219,9 @@ function App() {
           alt="Carol en el muelle"
           style={{
             width: '100%',
-            height: isFullscreen ? '100vh' : 'auto',
-            objectFit: isFullscreen ? 'contain' : 'cover',
+            height: 'auto',
+            maxHeight: isFullscreen ? '100vh' : 'none',
+            objectFit: 'contain',
             objectPosition: 'center',
             display: 'block'
           }}
