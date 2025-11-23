@@ -1,7 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import muelleImage from './muelle.jpg';
 
 function App() {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const imageRef = useRef(null);
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://fast.wistia.com/assets/external/E-v1.js';
@@ -14,6 +17,30 @@ function App() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
+  const toggleFullscreen = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await imageRef.current?.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (error) {
+      console.error('Error toggling fullscreen:', error);
+    }
+  };
 
   return (
     <div style={{ 
@@ -173,14 +200,56 @@ function App() {
       </section>
 
       {/* IMAGEN DE PERSONA EN MUELLE */}
-      <section style={{
-        backgroundImage: `url(${muelleImage})`,
-        backgroundSize: '100% auto',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center',
-        backgroundColor: '#000',
-        minHeight: '100vh'
-      }}></section>
+      <section
+        ref={imageRef}
+        style={{
+          backgroundImage: `url(${muelleImage})`,
+          backgroundSize: isFullscreen ? 'contain' : '100% auto',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
+          backgroundColor: '#000',
+          minHeight: '100vh',
+          position: 'relative',
+          cursor: 'pointer'
+        }}
+        onClick={toggleFullscreen}
+      >
+        {/* Fullscreen Button */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFullscreen();
+          }}
+          style={{
+            position: 'absolute',
+            bottom: '20px',
+            right: '20px',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            color: '#fff',
+            border: '2px solid rgba(255, 255, 255, 0.3)',
+            borderRadius: '50%',
+            width: '60px',
+            height: '60px',
+            fontSize: '24px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.3s ease',
+            zIndex: 10
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            e.currentTarget.style.transform = 'scale(1.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+            e.currentTarget.style.transform = 'scale(1)';
+          }}
+        >
+          {isFullscreen ? '✕' : '⛶'}
+        </button>
+      </section>
 
       {/* JOIN THE NEWSLETTER SECTION */}
       <section style={{
