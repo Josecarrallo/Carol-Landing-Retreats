@@ -206,11 +206,11 @@ function App() {
           backgroundColor: '#000',
           width: '100%',
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           justifyContent: 'center',
           position: 'relative',
           cursor: 'pointer',
-          minHeight: '100vh'
+          overflow: 'auto'
         }}
         onClick={toggleFullscreen}
       >
@@ -218,11 +218,9 @@ function App() {
           src={muelleImage}
           alt="Carol en el muelle"
           style={{
-            width: '100%',
+            maxWidth: '100%',
+            width: 'auto',
             height: 'auto',
-            maxHeight: isFullscreen ? '100vh' : 'none',
-            objectFit: 'contain',
-            objectPosition: 'center',
             display: 'block'
           }}
         />
