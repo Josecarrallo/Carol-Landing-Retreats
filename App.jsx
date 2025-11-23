@@ -199,62 +199,26 @@ function App() {
         </div>
       </section>
 
-      {/* IMAGEN DE PERSONA EN MUELLE */}
-      <section
-        ref={imageRef}
-        style={{
-          backgroundColor: '#000',
-          position: 'relative',
-          cursor: 'pointer',
-          width: '100%',
-          display: 'block'
-        }}
-        onClick={toggleFullscreen}
-      >
-        <img
-          src={muelleImage}
-          alt="Carol Stanbury Retreat"
-          style={{
-            width: '100%',
-            height: 'auto',
-            display: 'block'
-          }}
-        />
-        {/* Fullscreen Button */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleFullscreen();
-          }}
-          style={{
-            position: 'absolute',
-            bottom: '20px',
-            right: '20px',
-            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-            color: '#fff',
-            border: '2px solid rgba(255, 255, 255, 0.3)',
-            borderRadius: '50%',
-            width: '60px',
-            height: '60px',
-            fontSize: '24px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.3s ease',
-            zIndex: 10
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-            e.currentTarget.style.transform = 'scale(1.1)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
-            e.currentTarget.style.transform = 'scale(1)';
-          }}
-        >
-          {isFullscreen ? '✕' : '⛶'}
-        </button>
+      {/* IMAGEN ELIMINADA PARA DEMOSTRAR QUE LOS CAMBIOS FUNCIONAN */}
+      <section style={{
+        backgroundColor: '#FF0000',
+        padding: '100px 20px',
+        textAlign: 'center'
+      }}>
+        <h2 style={{
+          fontSize: '48px',
+          color: '#fff',
+          fontWeight: 'bold'
+        }}>
+          ✓ CAMBIOS FUNCIONAN ✓
+        </h2>
+        <p style={{
+          fontSize: '24px',
+          color: '#fff',
+          marginTop: '20px'
+        }}>
+          Si ves esto en ROJO, los cambios SÍ se están aplicando
+        </p>
       </section>
 
       {/* JOIN THE NEWSLETTER SECTION */}
