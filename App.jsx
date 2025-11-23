@@ -203,17 +203,23 @@ function App() {
       <section
         ref={imageRef}
         style={{
-          backgroundImage: `url(${muelleImage})`,
-          backgroundSize: '100% auto',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center center',
           backgroundColor: '#000',
-          minHeight: '100vh',
           position: 'relative',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          width: '100%',
+          display: 'block'
         }}
         onClick={toggleFullscreen}
       >
+        <img
+          src={muelleImage}
+          alt="Carol Stanbury Retreat"
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block'
+          }}
+        />
         {/* Fullscreen Button */}
         <button
           onClick={(e) => {
