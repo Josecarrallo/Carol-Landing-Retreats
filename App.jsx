@@ -61,9 +61,9 @@ function App() {
           fontSize: '20px',
           fontWeight: 'bold',
           letterSpacing: '4px',
-          color: '#fff'
+          color: '#00FF00'
         }}>
-          STANBURY RETREATS
+          ★ TEST CAMBIO ★ STANBURY RETREATS
         </h1>
       </header>
 
